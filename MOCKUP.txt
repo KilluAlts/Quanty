@@ -1,0 +1,147 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                           QUANTY  v0.1                                     ║
+║              Systematic Ranking & Execution Pipeline                        ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────┬────────────────────────────────────────────────────────────┐
+│  NAV        │  DASHBOARD                        LIVE  CONNECTED          │
+│             │                                                             │
+│  Dashboard  │  ┌──────────┬──────────┬──────────┬──────────┬──────────┐  │
+│  Rankings   │  │  BTC     │  ETH     │  SOL     │  ARB     │  OP      │  │
+│  Pipeline   │  │ $63,421  │ $3,127   │ $148.23  │ $0.87    │ $2.14    │  │
+│  Portfolio  │  │ +2.3%    │ +1.1%    │ -0.4%    │ +4.2%    │ -1.1%    │  │
+│  Backtest   │  │ UP       │ UP       │ DOWN     │ UP       │ DOWN     │  │
+│  Settings   │  └──────────┴──────────┴──────────┴──────────┴──────────┘  │
+│             │                                                             │
+│  -------    │  PIPELINE STATUS                                            │
+│  Chat       │  L1 Ranking  [=======..]  72%   next run in 12m            │
+│             │  L2 Trend    [========..]  82%   fresh                      │
+│             │  L3 Confirm  [====......]  45%   fresh                      │
+│             │  L4 Execute  [====......]  60%   idle - no signals          │
+│             │                                                             │
+│  STATUS     │  RISK DASHBOARD                                             │
+│  Gateway:ON │  ┌──────────────┬──────────────┬──────────────────────────┐ │
+│  Sessions:1 │  │ Daily PnL    │ Drawdown     │ Open Positions           │ │
+│             │  │ +$143 (+0.7%)│ -2.1%        │ 3 (BTC, ETH, SOL)       │ │
+│  v0.13.0    │  └──────────────┴──────────────┴──────────────────────────┘ │
+└─────────────┴────────────────────────────────────────────────────────────┘
+
+================================================================================
+
+RANKINGS  |  RIS Matrix - Relative Intensity Scores
+
+Symbol    1h Delta   4h Delta   24h Delta   RIS Score   Trend   Direction
+-------   --------   --------   ---------   ---------   -----   ---------
+BTC       +1.2%      +3.8%      +5.4%       87  UP       92     Strong Up
+ETH       +0.8%      +2.1%      +4.1%       76  UP       78     Up
+SOL       -0.3%      +1.5%      +2.2%       62  NEUT     55     Neutral
+ARB       +4.2%      +6.7%      +8.9%       94  UP       88     Strong Up
+OP        -0.5%      -2.1%      -1.8%       31  DOWN     22     Weak
+AVAX      -1.2%      -0.8%      +0.5%       48  NEUT     45     Neutral
+LINK      +0.1%      +3.2%      +6.1%       71  UP       68     Up
+ATOM      -2.1%      -4.3%      -3.2%       18  DOWN     15     Strong Down
+DOGE      +0.5%      +1.1%      -0.3%       53  NEUT     40     Neutral
+MATIC     -1.8%      -0.5%      +1.2%       42  NEUT     35     Weak
+
+Top 3: ARB(94), BTC(87), LINK(71)    Bottom 3: ATOM(18), OP(31), MATIC(42)
+
+================================================================================
+
+PIPELINE VIEWER  |  Layer-by-layer live output
+
+LAYER 1 - RANKING
+  Last run: 12:34:22 UTC    Next: 12:49:22 UTC    Assets: 12/20
+  Top 3: ARB(94), BTC(87), LINK(71)
+  Bottom 3: ATOM(18), OP(31), MATIC(42)
+  [Re-rank now]  [Edit windows: 1h 4h 24h]  [Weights: 0.2/0.3/0.5]
+
+LAYER 2 - TREND ALIGNMENT
+  Last run: 12:34:22 UTC    Fresh
+  ARB   [================..]  88   UP    5m/15m/1h aligned (3/3 TFs)
+  BTC   [==============....]  78   UP    5m/1h aligned (2/3 TFs)
+  SOL   [==========........]  55   NEUT  only 1h aligned (1/3 TFs)
+  ATOM  [====..............]  15   DOWN  no TFs aligned (0/3)
+
+LAYER 3 - CONFIRMATION GATE
+  Pending: 4 signals from Layers 1+2
+
+  ARB  LONG  V:Volume(+180%)  V:Breakout   X:MA cross   PASS (2/3)
+  BTC  LONG  X:Volume(-12%)   V:Breakout   V:MA cross   PASS (2/3)
+  LINK LONG  V:Volume(+45%)   X:Breakout   V:MA cross   PASS (2/3)
+  ATOM SHORT X:Volume(-8%)    X:Breakout   V:MA cross   FAIL (1/3)
+
+LAYER 4 - EXECUTION
+  Orders generated: 3 of 4 passed confirmation
+
+  ARB  LONG  0.50 ETH  Entry: $0.87    SL: $0.82    TP: $0.95
+  BTC  LONG  0.02 BTC  Entry: $63,421  SL: $61,800  TP: $65,500
+  LINK LONG  5.00 LINK Entry: $14.20   SL: $13.50   TP: $16.00
+
+================================================================================
+
+PORTFOLIO
+
+PnL Summary:  +$1,247 (+2.3%)   Today: +$143 (+0.7%)
+
+Asset    Side    Size    Entry      Current    PnL       Return
+-----    ----    ----    -----      -------    ---       ------
+BTC      LONG    0.15    $62,100    $63,421    +$198     +2.1%
+ETH      LONG    2.5     $3,050     $3,127     +$192     +2.5%
+ARB      LONG    500     $0.81      $0.87      +$30      +7.4%
+
+Order History (Last 5):
+  12:34  ARB  BUY   500 @ $0.87      FILLED    +$30.00
+  11:15  ETH  BUY   2.5 @ $3,127     FILLED    +$192
+  09:30  BTC  BUY   0.15 @ $62,100   FILLED    +$198
+  08:00  SOL  SELL  10 @ $147.50     FILLED    +$12
+  07:45  SOL  BUY   10 @ $146.20     FILLED    -$12
+
+  [Equity Curve Chart - rendered as interactive line chart in web UI]
+
+================================================================================
+
+BACKTEST
+
+  Assets: [BTC ETH SOL ARB OP v]     Date: [May 1  ->  May 8 2026]
+  Params: [Load from pipeline_params.yaml]    [ RUN BACKTEST ]
+
+  Metric               Value        |  Equity Curve (interactive)
+  -------------------- ---------    |  $56k -/-\
+  Total Return         +4.2%        |  $55k -   \-/-\
+  Sharpe Ratio         1.87         |  $54k -     \-/-\
+  Max Drawdown         -3.1%        |  $53k -       \-
+  Win Rate             58.3%        |  $52k -------
+  Profit Factor        1.92         |
+  Total Trades         36           |  [Trade markers on chart]
+  Avg Hold Time        4h 12m       |
+
+  Layer Contribution Analysis:
+  L1 Ranking: +2.1%   L2 Trend: +1.4%   L3 Confirm: +0.5%   L4 Exec: +0.2%
+
+================================================================================
+
+CHAT PANEL  |  Connected to Hermes
+
+  Hermes: I added the new confirmation rule. Layer 3 now rejects
+          signals with declining volume over the last 3 candles.
+          This affected LINK and MATIC on the last cycle. Details
+          are in the Pipeline Viewer log.
+
+  You:    Add a new confirmation rule - dont trade if volume
+          is declining over the last 3 candles.
+
+  Hermes: ARB is ranked #1 because it leads all 20 tracked assets
+          in 1h (+4.2%), 4h (+6.7%), and 24h (+8.9%) returns -
+          top quartile in all three windows. Trend alignment
+          confirms all 3 timeframes agree (uptrend). Volume is
+          180% of average on the last candle.
+
+  You:    Show me why ARB is ranked first.
+
+  [Type a message...                                              SEND]
+
+================================================================================
+
+  Settings Page - YAML editor for tracked_assets.yaml,
+  pipeline_params.yaml, and risk.yaml. Structured form with
+  raw editor fallback. Save triggers pipeline hot-reload.
